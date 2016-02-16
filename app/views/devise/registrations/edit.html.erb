@@ -7,7 +7,27 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
+  <div class="field">
+    <%= f.label :name %> <br />
+    <%= f.text_field :name%>
+  </div>
 
+  <div class="field">
+    <%= f.label :city %> <br />
+    <%= f.text_field :city%>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %> <br />
+    <%= f.text_field :country%>
+  </div>
+
+  <div class="field">
+  <%= f.radio_button(:gender, "Male") %>
+  <%= f.label(:gender, "Male") %>
+  <%= f.radio_button(:gender, "Female") %>
+  <%= f.label(:gender, "Female") %>
+  </div>
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

@@ -8,13 +8,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">WeSocial</a>
+      <%= link_to "WeSocial", root_path, class: "navbar-brand"%>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
+          <% if user_signed_in? %>
+          <li><%= link_to 'Profile', edit_user_registration_path %></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          <% else %>
         <li><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li><a href="#">Contact</a></li>
+        <%end %>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
