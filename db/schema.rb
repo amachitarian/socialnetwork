@@ -11,32 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217152758) do
+ActiveRecord::Schema.define(version: 20160217232452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "followers", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "leader_id"
     t.integer  "follower_id"
-    t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "followers", ["followed_id"], name: "index_followers_on_followed_id", using: :btree
-  add_index "followers", ["follower_id", "followed_id"], name: "index_followers_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "followers", ["follower_id"], name: "index_followers_on_follower_id", using: :btree
-
-  create_table "followers_users", force: :cascade do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "followers_users", ["followed_id"], name: "index_followers_users_on_followed_id", using: :btree
-  add_index "followers_users", ["follower_id", "followed_id"], name: "index_followers_users_on_follower_id_and_followed_id", unique: true, using: :btree
-  add_index "followers_users", ["follower_id"], name: "index_followers_users_on_follower_id", using: :btree
+  add_index "subscriptions", ["follower_id"], name: "index_subscriptions_on_follower_id", using: :btree
+  add_index "subscriptions", ["leader_id"], name: "index_subscriptions_on_leader_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

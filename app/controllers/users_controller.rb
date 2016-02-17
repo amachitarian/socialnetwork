@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+
   end
 
   def update
@@ -17,10 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def follow
-    @user = User.find(params[:id])
-    me_following.following.build(:follower_id, @user.id)
-  end
 
   private
   def user_params
