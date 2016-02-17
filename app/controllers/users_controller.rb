@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def index
     @users = User.all
   end
@@ -15,6 +16,10 @@ class UsersController < ApplicationController
     else
       render edit_user_registration_path
     end
+  end
+
+  def follow(other_user)
+    me_following.create(followed_id :other_user.id)
   end
 
   private
