@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
 
+  resources :followers, only: [:create, :destroy]
+
 end

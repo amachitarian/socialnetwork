@@ -1,7 +1,7 @@
 <div class="container">
 
     <% @users.each do |user| %>
-    <h1>Name: <%= user.name %></h1>
+    <h1>Name: <%= link_to user.name, user %></h1>
     <h2>User id: <%= user.id %></h2>
     <h3><%= user.email %></h3>
 

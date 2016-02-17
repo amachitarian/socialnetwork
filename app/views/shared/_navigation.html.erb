@@ -9,9 +9,10 @@
         <span class="icon-bar"></span>
       </button>
       <%= link_to "WeSocial", root_path, class: "navbar-brand"%>
+      <span>My User ID: <%= current_user.id %></span>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
           <li><%= link_to 'Profile', edit_user_registration_path %></li>
           <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
