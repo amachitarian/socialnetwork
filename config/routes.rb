@@ -10,7 +10,7 @@ Rails.application.routes.draw do
                                :registration =>  'register',
                                :edit =>          'edit',
                                :cancel =>        'cancel',
-                               :confirmation =>  'verification' }
+                               :confirmation =>  'verification'}
 
   resources :users do
     member do

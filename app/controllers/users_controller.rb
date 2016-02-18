@@ -1,22 +1,19 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    if user_signed_in?
+      @users = User.all
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def show
     @user = User.find(params[:id])
-
+    
   end
 
-  def update
-    @user = User.find(params[:id])
-    if @user = User.update(user_params)
-      redirect_to @user
-    else
-      render edit_user_registration_path
-    end
-  end
+
 
 
   private
