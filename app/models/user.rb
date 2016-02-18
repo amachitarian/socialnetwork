@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
     # a user's followers
     has_many :followers, through: :reverse_subscriptions
 
+    has_many :posts
+    has_many :comments, through: :posts
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 

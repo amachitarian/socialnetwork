@@ -1,0 +1,21 @@
+
+<div class="row">
+<h1>Share a new post</h1>
+  <%= render "form" %>
+</div>
+
+  <div class="row">
+    <h2>Your feed</h2>
+    <% @posts.order("created_at desc").each do |post| %>
+      <div class="col-sm-8 well">
+        <div class="col-sm-2">
+          <p><%= image_tag post.user.profile_pic %>
+        </div>
+        <div class="col-sm-8">
+          <p>posted by: <%= post.user.name %></p>
+          <p><%= post.body %></p>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
