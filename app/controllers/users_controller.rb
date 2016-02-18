@@ -10,15 +10,20 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
   end
 
   def follow
     @user = User.find(params[:id])
     if current_user.follow!(@user)
-      redirect_to @user, notice: "Follow successful!"
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "Follow successful :)" }
+        format.json { render json: { followers: @user.followers} }
+        end
     else
-      redirect_to @user, notice: "Sorry, failed"
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "Sorry, you can't follow this user" }
+        format.json { render json: { errors: @followers.errors }, status: :unprocessable_entity }
+      end
     end
   end
 
