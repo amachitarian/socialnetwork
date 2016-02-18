@@ -20,11 +20,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #    # Follows a user.
-  #  def follow(other_user)
-  #    active_relationships.create(followed_id: other_user.id)
-  #  end
-
   def following?(leader)
     leaders.include? leader
   end
