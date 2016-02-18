@@ -14,10 +14,8 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :following, :followers
+      get :follow
     end
   end
-
-  resources :followers, only: [:create, :destroy]
 
 end
