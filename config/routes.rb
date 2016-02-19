@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#index'
+  root 'posts#index'
   devise_for :users,
              :controllers => { :registrations => "registrations"},
              :path => "",
@@ -14,8 +14,13 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      post :follow
+      post :follow, as: :add_follower
+      get :follow, as: :view_followers
     end
+  end
+
+  resources :posts do
+    resources :comments
   end
 
 end

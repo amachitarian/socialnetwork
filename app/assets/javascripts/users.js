@@ -7,8 +7,7 @@ function follow(url, id) {
     url: url + ".json"
   })
     .done(function(response) {
-      console.log(response.followers.length);
-      $("#follow-count-" + id).html(response.followers.length);
+      $("#follow-count-" + id).animate({"background-color": "#5cb85c" }, 2000).html(response.followers.length);
     })
 
     // .fail(function( xhr ) {
@@ -26,7 +25,6 @@ $(document).ready(function() {
   $(".follow").click(function(e) {
     var href = $(this).attr("href");
     var user_id = $(this).attr("data-user-id");
-    console.log(href, user_id)
     follow(href, user_id);
     e.preventDefault();
   });

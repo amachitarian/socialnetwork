@@ -1,0 +1,26 @@
+
+<div class="row">
+  <% if user_signed_in? %>
+    <h1>Share a new post</h1>
+      <%= render "form" %>
+    </div>
+
+      <div class="row">
+        <h2>Your feed</h2>
+        <% @posts.order("created_at desc").each do |post| %>
+          <div class="col-sm-8 well">
+            <div class="col-sm-2">
+              <p><img src="http://placehold.it/200x200" class="img-responsive"></p>
+            </div>
+            <div class="col-sm-8">
+              <p>posted by: <%= link_to post.user.name, post.user %></p>
+              <p><strong><%= post.body %></strong></p>
+            </div>
+          </div>
+
+        <% end %>
+    <% else %>
+        <h1>Welcome to WeSocial </h1>
+        <h2>Please <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %> to get social with us!</p>
+    <% end %>
+  </div>
