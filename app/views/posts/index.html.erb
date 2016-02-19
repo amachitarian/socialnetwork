@@ -1,4 +1,8 @@
+<div class="background">
+  <%= image_tag "background.jpg", size: ""%>
+</div>
 
+<div class="big">
 <div class="row">
   <% if user_signed_in? %>
     <h1>Share a new post</h1>
@@ -12,6 +16,17 @@
             <div class="col-sm-2">
               <p><img src="http://placehold.it/200x200" class="img-responsive"></p>
             </div>
+            <div class="post">
+              <p><%= post.body %></p>
+              <noscript>
+                <%= render "/likes/form", post: post %>
+              </noscript>
+              <span class="counter" id="post-counter-<%= post.id %>">
+                <%= post.likes.count %>
+              </span>
+              <%= link_to "Like", post_likes_path(post), class: "like-button", data: { post_id: post.id } %>
+            </div>
+
             <div class="col-sm-8">
               <p>posted by: <%= link_to post.user.name, post.user %></p>
               <p><strong><%= post.body %></strong></p>
@@ -19,8 +34,9 @@
           </div>
 
         <% end %>
+      </div>
     <% else %>
-        <h1>Welcome to WeSocial </h1>
+
         <h2>Please <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %> to get social with us!</p>
     <% end %>
   </div>
