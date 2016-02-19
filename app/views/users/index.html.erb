@@ -2,10 +2,10 @@
   <% @users.in_groups_of(3).each do |users|   %>
     <div class="row">
         <% users.compact.each do |u| %>
-        <div class="col-sm-1">
-          <p>profile image</p>
+        <div class="col-sm-2">
+          <p><img src="http://placehold.it/200x200" class="img-responsive"></p>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
           <h3><%= link_to u.name, u %></h3>
           <p><%= link_to "Follow", add_follower_user_path(u), class: "btn btn-primary follow", data: {user_id: u.id} %> </p>
           <p>Followers: <%= link_to u.followers.count, user_path(u),id: "follow-count-" + u.id.to_s , class: "label label-info"%></p>
