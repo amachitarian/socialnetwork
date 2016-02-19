@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def index
     if user_signed_in?
       @users = User.all
+      @user = current_user
     else
       redirect_to new_user_registration_path
     end
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to @user, notice: "Sorry, you can't follow this user" }
-        format.json { render json: { errors: @followers.errors }, status: :unprocessable_entity }
+        format.json {  }
       end
     end
   end
