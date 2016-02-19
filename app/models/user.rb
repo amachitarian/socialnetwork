@@ -33,5 +33,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def unfollow!(leader)
+    if leader != self && following?(leader)
+      subscriptions.where(leader_id: leader.id).first.destroy
+    end
+  end
+
 
 end

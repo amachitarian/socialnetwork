@@ -7,7 +7,11 @@
         </div>
         <div class="col-sm-2">
           <h3><%= link_to u.name, u %></h3>
-          <p><%= link_to "Follow", add_follower_user_path(u), class: "btn btn-primary follow", data: {user_id: u.id} %> </p>
+          <% if current_user.following?(u) %>
+            <p><%= link_to "Unfollow", remove_follower_user_path(u), class: "btn btn-default follow unfollow", data: {user_id: u.id} %> </p>
+          <% else %>
+            <p><%= link_to "Follow", add_follower_user_path(u), class: "btn btn-info follow", data: {user_id: u.id} %> </p>
+          <% end %>
           <p>Followers: <%= link_to u.followers.count, user_path(u),id: "follow-count-" + u.id.to_s , class: "label label-info"%></p>
           <p>Following: <%= link_to u.leaders.count, user_path(u),id: "leader-count-" + u.id.to_s , class: "label label-info"%></p>
         </div>

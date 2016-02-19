@@ -18,17 +18,31 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if current_user.follow!(@user)
       respond_to do |format|
-        format.html { redirect_to @user, notice: "Follow successful :)" }
+        format.html { redirect_to @user, notice: "You are now following #{@user.name}." }
         format.json { render json: { followers: @user.followers} }
         end
     else
       respond_to do |format|
-        format.html { redirect_to @user, notice: "Sorry, you can't follow this user" }
+        format.html { redirect_to @user, notice: "Sorry, you can't #{@user.name}." }
         format.json {  }
       end
     end
   end
 
+  def unfollow
+    @user = User.find(params[:id])
+    if current_user.unfollow!(@user)
+      respond_to do |format|
+        format.html { redirect_to @user, notice: "You no longer follow #{@user.name}." }
+        format.json { render json: { followers: @user.followers} }
+      end
+    else
+        respond_to do |format|
+          format.html { redirect_to @user }
+          format.json {  }
+        end
+      end
+   end
 
   private
   def user_params

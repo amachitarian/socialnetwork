@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :users do
     member do
       post :follow, as: :add_follower
-      get :follow, as: :view_followers
+      # get :follow, as: :view_followers
+      delete :unfollow, as: :remove_follower
     end
   end
 
