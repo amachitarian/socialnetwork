@@ -12,7 +12,7 @@ function follow(url, id, button) {
   })
     .done(function(response) {
       $(button).toggleClass("unfollow");
-      $(button).toggleClass("btn-info");
+      $(button).toggleClass("btn-warning");
       $(button).toggleClass("btn-default");
       var href = $(button).attr("href");
       if (method === "POST") {

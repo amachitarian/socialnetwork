@@ -1,5 +1,41 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+html{
+  height: 100%;
+}
+body {
+  height: 100%;
+  &.public{
+    background-image: image_url("background1.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    .signup,
+    .logo{
+      text-align: center;
+    }
+    .navbar-default {
+        background-color: transparent;
+        border: none;
+        .navbar-nav > li > a,
+        .navbar-brand {
+          color: white;
+          &:hover,
+          &:focus{
+            border: none;
+            color: #F0AD4E;
+          }
+        }
+    }
+  }
+  &.private{
+    .navbar-default {
+      background-color: #F0AD4E;
+    }
+  }
+}
+
 .alert-alert {
   @extend .alert-warning;
 }
@@ -10,16 +46,3 @@
 h3{
   margin-top:0;
 }
-body {background-color: #ffffff}
-
- .logo {margin-bottom: 23px;
-   margin-left: 0px
- }
-
- .background {margin-left: -240px}
-
-.big {margin-top: -186px;
-background-color: white;}
-
-h1 {color: white;}
-h2 {color: black;}
