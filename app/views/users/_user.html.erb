@@ -1,0 +1,13 @@
+<div class="col-sm-2">
+  <p><img src="http://placehold.it/200x200" class="img-responsive"></p>
+</div>
+<div class="col-sm-2">
+  <h3><%= link_to user.name, user %></h3>
+  <% if current_user.following?(user) %>
+    <p><%= link_to "Unfollow", remove_follower_user_path(user), class: "btn btn-default follow unfollow", data: {user_id: user.id} %> </p>
+  <% else %>
+    <p><%= link_to "Follow", add_follower_user_path(user), class: "btn btn-warning follow", data: {user_id: user.id} %> </p>
+  <% end %>
+  <p>Followers: <%= link_to user.followers.count, user_path(user),id: "follow-count-" + user.id.to_s , class: "label label-warning"%></p>
+  <p>Following: <%= link_to user.leaders.count, user_path(user),id: "leader-count-" + user.id.to_s , class: "label label-warning"%></p>
+</div>
